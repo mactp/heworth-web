@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heworth Web — Websites for local business | York · Harrogate · Knaresborough</title>
+<meta name="description" content="Hand-built, fast, mobile-friendly websites for local businesses and community groups across York, Harrogate and Knaresborough. Designed properly and looked after monthly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0e1014; --ink-2:#1a1d24; --paper:#ffffff; --paper-2:#f6f7f9;
+  --line:#e6e8ec; --line-d:#2a2e38; --muted:#5c6470; --muted-d:#9aa3b2;
+  --accent:#4f46e5; --accent-2:#7c6cff; --accent-soft:#eef0ff;
+  --max:1180px; --r:14px; --shadow:0 18px 50px rgba(14,16,20,.12); --shadow-sm:0 6px 22px rgba(14,16,20,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;font-size:18px;line-height:1.65;color:#22262e;background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Space Grotesk","Inter",sans-serif;line-height:1.08;letter-spacing:-.02em;color:var(--ink);margin:0 0 .5em;font-weight:700}
+h1{font-size:clamp(2.4rem,6vw,4.4rem)}
+h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+h3{font-size:1.2rem}
+p{margin:0 0 1.1em}
+a{color:var(--accent)}
+img{max-width:100%;display:block}
+.wrap{width:100%;max-width:var(--max);margin:0 auto;padding:0 6%}
+.section{padding:clamp(3.5rem,8vw,7rem) 0}
+.section--alt{background:var(--paper-2)}
+.section--dark{background:var(--ink);color:#e7eaf0}
+.section--dark h2,.section--dark h3{color:#fff}
+.section--dark p{color:var(--muted-d)}
+.kicker{display:inline-flex;align-items:center;gap:.6rem;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;font-weight:700;color:var(--accent);margin:0 0 1rem}
+.kicker::before{content:"";width:24px;height:2px;background:var(--accent);border-radius:2px}
+.section--dark .kicker{color:var(--accent-2)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.9rem 1.6rem;border-radius:10px;font-weight:600;font-size:.98rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .16s,box-shadow .2s,background .2s,color .2s}
+.btn svg{transition:transform .16s}
+.btn:hover svg{transform:translateX(3px)}
+.btn--primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(79,70,229,.3)}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(79,70,229,.4)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--accent);color:var(--accent)}
+.section--dark .btn--ghost{color:#fff;border-color:var(--line-d)}
+.section--dark .btn--ghost:hover{border-color:var(--accent-2);color:var(--accent-2)}
+
+/* header */
+.hdr{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .3s}
+.hdr.scrolled{border-bottom-color:var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink);font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:1.1rem;letter-spacing:-.01em}
+.brand__mark{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;flex:none}
+.nav__links{display:flex;align-items:center;gap:1.8rem;list-style:none;margin:0;padding:0}
+.nav__links a{text-decoration:none;color:#3a414c;font-weight:500;font-size:.97rem}
+.nav__links a:hover{color:var(--accent)}
+.nav__links .btn{padding:.55rem 1.1rem}
+.nav__toggle{display:none;background:none;border:0;cursor:pointer;padding:.4rem}
+.nav__toggle span{display:block;width:26px;height:2px;background:var(--ink);margin:5px 0;transition:.25s}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:clamp(3.5rem,9vw,7rem) 0 clamp(3rem,7vw,6rem)}
+.hero::before{content:"";position:absolute;top:-30%;right:-10%;width:60%;height:120%;background:radial-gradient(circle at 60% 40%,rgba(124,108,255,.18),transparent 60%);z-index:0}
+.hero .wrap{position:relative;z-index:1}
+.hero__badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:.85rem;padding:.4rem .9rem;border-radius:50px;margin-bottom:1.6rem}
+.hero__badge .dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 3px rgba(34,197,94,.2)}
+.hero h1{max-width:16ch}
+.hero h1 .grad{background:linear-gradient(120deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero__lead{font-size:clamp(1.1rem,1.8vw,1.35rem);color:var(--muted);max-width:52ch;margin:1.2rem 0 2rem}
+.hero__cta{display:flex;gap:1rem;flex-wrap:wrap}
+.trustline{margin-top:2.6rem;display:flex;flex-wrap:wrap;gap:.6rem 1.8rem;color:var(--muted);font-size:.9rem;font-weight:500}
+.trustline span{display:flex;align-items:center;gap:.5rem}
+.trustline svg{color:var(--accent)}
+
+/* work */
+.section__head{max-width:620px;margin-bottom:3rem}
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.project{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;display:flex;flex-direction:column}
+.project:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.project__img{position:relative;aspect-ratio:16/10;overflow:hidden}
+.project__img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.project:hover .project__img img{transform:scale(1.04)}
+.project__tag{position:absolute;top:1rem;left:1rem;background:rgba(14,16,20,.78);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.35rem .7rem;border-radius:50px;backdrop-filter:blur(4px)}
+.project__body{padding:1.6rem 1.7rem 1.8rem}
+.project__body h3{margin-bottom:.3rem;font-family:"Space Grotesk",sans-serif}
+.project__meta{font-size:.85rem;color:var(--accent);font-weight:600;margin-bottom:.7rem}
+.project__body p{color:var(--muted);font-size:1rem;margin-bottom:1.2rem}
+.project__link{display:inline-flex;align-items:center;gap:.4rem;font-weight:600;text-decoration:none;color:var(--ink);font-size:.95rem}
+.project__link:hover{color:var(--accent)}
+.project__link svg{transition:transform .16s}
+.project__link:hover svg{transform:translateX(3px)}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem}
+.chip{background:var(--paper-2);border:1px solid var(--line);color:var(--muted);font-size:.78rem;font-weight:500;padding:.25rem .65rem;border-radius:50px}
+
+/* services */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.svc-card{background:var(--ink-2);border:1px solid var(--line-d);border-radius:var(--r);padding:2rem 1.8rem;display:flex;flex-direction:column}
+.svc-card--feature{background:linear-gradient(160deg,#241f4d,#1a1d24);border-color:#3b3470;position:relative}
+.svc-card__badge{position:absolute;top:1.3rem;right:1.3rem;background:var(--accent);color:#fff;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.25rem .6rem;border-radius:50px}
+.svc-card h3{font-family:"Space Grotesk",sans-serif;margin-bottom:.3rem}
+.svc-card__sub{color:var(--accent-2);font-weight:600;font-size:.9rem;margin-bottom:1.2rem}
+.svc-card ul{list-style:none;padding:0;margin:0 0 1.6rem;flex:1}
+.svc-card li{display:flex;gap:.6rem;align-items:flex-start;color:var(--muted-d);font-size:.97rem;margin-bottom:.7rem;line-height:1.45}
+.svc-card li svg{flex:none;margin-top:4px;color:var(--accent-2)}
+.svc-card .btn{width:100%;justify-content:center}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;counter-reset:s}
+.step{position:relative}
+.step__n{counter-increment:s;font-family:"Space Grotesk",sans-serif;font-size:2.2rem;font-weight:700;color:var(--accent);opacity:.9;line-height:1;margin-bottom:.6rem}
+.step__n::before{content:"0" counter(s)}
+.step h3{font-family:"Space Grotesk",sans-serif}
+.step p{color:var(--muted);font-size:1rem;margin:0}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.about-card{background:var(--paper-2);border:1px solid var(--line);border-radius:var(--r);padding:2rem}
+.about-card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.8rem 1.2rem}
+.about-card dt{font-weight:600;color:var(--ink)}
+.about-card dd{margin:0;color:var(--muted)}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+.field{margin-bottom:1.1rem}
+.field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.4rem;color:#e7eaf0}
+.field input,.field textarea{width:100%;padding:.85rem 1rem;font:inherit;font-size:1rem;border:1px solid var(--line-d);border-radius:10px;background:#11141a;color:#fff}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent-2);box-shadow:0 0 0 3px rgba(124,108,255,.25)}
+.contact-info a{color:#fff;text-decoration:none}
+.contact-info a:hover{color:var(--accent-2)}
+.contact-info .big{font-family:"Space Grotesk",sans-serif;font-size:1.4rem;font-weight:600;display:inline-block;margin:.3rem 0 1.5rem}
+.form-ok{display:none;background:#10261a;border:1px solid #1f5a37;color:#86efac;padding:1rem 1.2rem;border-radius:10px;margin-bottom:1rem}
+.form-ok.show{display:block}
+
+/* footer */
+.foot{background:#08090c;color:#7a828f;padding:2.5rem 0;font-size:.9rem}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.foot a{color:#9aa3b2;text-decoration:none}
+.foot a:hover{color:#fff}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .nav__toggle{display:block}
+  .nav__links{position:absolute;top:74px;left:0;right:0;flex-direction:column;align-items:flex-start;background:#fff;border-bottom:1px solid var(--line);padding:1rem 6%;gap:.4rem;display:none}
+  .nav__links.open{display:flex}
+  .nav__links li{width:100%}
+  .nav__links a{display:block;padding:.6rem 0;width:100%}
+  .work-grid,.cards,.steps,.about-grid,.contact-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.btn:hover,.project:hover{transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="brand__mark">HW</span> Heworth Web</a>
+    <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
+    <ul class="nav__links" id="navlinks">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a class="btn btn--primary" href="#contact">Start a project</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="hero__badge"><span class="dot"></span> Available for new projects</span>
+      <h1>Websites that win local businesses <span class="grad">real work.</span></h1>
+      <p class="hero__lead">I design and build clean, fast, mobile-friendly websites for small businesses and community groups across York, Harrogate and Knaresborough — then look after them so you never have to think about it.</p>
+      <div class="hero__cta">
+        <a class="btn btn--primary" href="#contact">Start a project
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn--ghost" href="#work">See my work</a>
+      </div>
+      <div class="trustline">
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Custom-built, no bloat</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Fast &amp; mobile-first</span>
+        <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Hosted &amp; looked after</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="section section--alt" id="work">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <p class="kicker">Selected work</p>
+        <h2>A couple of sites I've built</h2>
+        <p style="color:var(--muted)">Real projects, built from scratch and deployed live — from a 30-acre charity park to a local trades business.</p>
+      </div>
+      <div class="work-grid">
+        <article class="project reveal">
+          <div class="project__img">
+            <img src="images/jsp.jpg" alt="Friends of Jacob Smith Park website — woodland park homepage banner">
+            <span class="project__tag">Live · Charity · WIP</span>
+          </div>
+          <div class="project__body">
+            <div class="project__meta">friendsofjsp.org.uk</div>
+            <h3>Friends of Jacob Smith Park</h3>
+            <div class="chips"><span class="chip">9-page site</span><span class="chip">Custom domain</span><span class="chip">Accessibility</span><span class="chip">GitHub Pages</span></div>
+            <p>A full multi-page website for a community charity looking after a 30-acre green space in Knaresborough — history, wildlife, visiting info, donations and volunteer sign-up. Currently live and being actively refined with the client.</p>
+            <a class="project__link" href="https://friendsofjsp.org.uk" target="_blank" rel="noopener">Visit the live site
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </article>
+
+        <article class="project reveal">
+          <div class="project__img">
+            <img src="images/heworth.jpg" alt="Heworth Joinery & Carpentry website — joiner planing oak in a workshop">
+            <span class="project__tag">Demo · Trades</span>
+          </div>
+          <div class="project__body">
+            <div class="project__meta">heworth-joinery-demo</div>
+            <h3>Heworth Joinery &amp; Carpentry</h3>
+            <div class="chips"><span class="chip">Bold design</span><span class="chip">Services &amp; pricing</span><span class="chip">Contact form</span><span class="chip">Responsive</span></div>
+            <p>A concept site for a local joiner — a bold, modern design showing how a small trades business can look genuinely premium online. Built as a demonstration piece.</p>
+            <a class="project__link" href="https://mactp.github.io/heworth-joinery-demo/" target="_blank" rel="noopener">View the demo
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M9 7h8v8"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section section--dark" id="services">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <p class="kicker">How I can help</p>
+        <h2>Simple packages, no jargon</h2>
+        <p>Every site is built from scratch, mobile-first and easy to find on Google. Pick a starting point — I'll tailor a fixed quote to what you actually need.</p>
+      </div>
+      <div class="cards">
+        <div class="svc-card reveal">
+          <h3>Starter site</h3>
+          <div class="svc-card__sub">For getting found</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Up to 4 pages</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Mobile-friendly &amp; fast</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Contact form &amp; map</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Your domain connected</li>
+          </ul>
+          <a class="btn btn--ghost" href="#contact">Request a quote</a>
+        </div>
+        <div class="svc-card svc-card--feature reveal">
+          <span class="svc-card__badge">Most popular</span>
+          <h3>Standard site</h3>
+          <div class="svc-card__sub">For growing businesses</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Up to 8 pages</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Everything in Starter</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Gallery &amp; written content</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Google Business setup</li>
+          </ul>
+          <a class="btn btn--primary" href="#contact">Request a quote</a>
+        </div>
+        <div class="svc-card reveal">
+          <h3>Care plan</h3>
+          <div class="svc-card__sub">Monthly peace of mind</div>
+          <ul>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Hosting, security &amp; SSL</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Small updates &amp; tweaks</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Backups &amp; monitoring</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>If it breaks, I fix it</li>
+          </ul>
+          <a class="btn btn--ghost" href="#contact">Request a quote</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section__head reveal">
+        <p class="kicker">How it works</p>
+        <h2>Three steps, no fuss</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><div class="step__n"></div><h3>We chat</h3><p>A quick call or email to understand your business, what you need, and what success looks like. I send a clear fixed quote.</p></div>
+        <div class="step reveal"><div class="step__n"></div><h3>I build</h3><p>I design and build your site, share a preview, and refine it with you until it's right. Your content, your way.</p></div>
+        <div class="step reveal"><div class="step__n"></div><h3>Launch &amp; look after</h3><p>We go live on your domain — then, if you like, I keep it updated, secure and running on a monthly care plan.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section section--alt" id="about">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <p class="kicker">About</p>
+        <h2>Hi, I'm Tom.</h2>
+        <p>I build websites for local businesses and community groups around York, Harrogate and Knaresborough. No page-builders, no bloated templates — just clean, custom-built sites that load fast, work on every phone, and are easy for customers to find.</p>
+        <p>I care about doing it properly: accessible, well-structured, and genuinely useful. And I don't disappear after launch — I'm happy to look after your site for the long run so it stays fast and up to date.</p>
+        <p>If you've got something in mind, I'd love to hear about it.</p>
+      </div>
+      <div class="about-card reveal">
+        <dl>
+          <dt>Based in</dt><dd>York, North Yorkshire</dd>
+          <dt>Works with</dt><dd>Local businesses &amp; community groups</dd>
+          <dt>Build style</dt><dd>Hand-coded, fast, accessible</dd>
+          <dt>Hosting</dt><dd>Reliable, with free SSL</dd>
+          <dt>Quotes</dt><dd>Free, fixed, no pressure</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section--dark" id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <p class="kicker">Get in touch</p>
+        <h2>Let's build something</h2>
+        <p>Tell me a little about your business and what you're after. I'll get back to you, usually within a day, with some thoughts and a free quote.</p>
+        <div class="contact-info">
+          <p style="margin-bottom:0;color:var(--muted-d)">Prefer email?</p>
+          <a class="big" href="mailto:thom.pyle@gmail.com">thom.pyle@gmail.com</a>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="form-ok" id="formok" role="status" tabindex="-1">Thanks — your message has been sent. I'll be in touch shortly.</div>
+        <!-- Formspree: replace YOUR_FORM_ID below with your real form ID (see DEPLOY.md, step on the form) -->
+        <form id="cform" action="https://formspree.io/f/mojzlkjd" method="POST" novalidate>
+          <div class="field"><label for="n">Your name</label><input id="n" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="b">Business / project</label><input id="b" name="business" type="text"></div>
+          <div class="field"><label for="m">What do you need?</label><textarea id="m" name="message" rows="4" required></textarea></div>
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0">
+          <input type="hidden" name="_subject" value="New enquiry from your website">
+          <button type="submit" class="btn btn--primary">Send message
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Heworth Web · Web design in York, Harrogate &amp; Knaresborough</span>
+    <span><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var t=document.querySelector(".nav__toggle"),l=document.getElementById("navlinks");
+  if(t&&l){t.addEventListener("click",function(){var o=l.classList.toggle("open");t.setAttribute("aria-expanded",o?"true":"false")});
+    l.addEventListener("click",function(e){if(e.target.tagName==="A"){l.classList.remove("open");t.setAttribute("aria-expanded","false")}});}
+  var h=document.getElementById("hdr");
+  if(h){var s=function(){h.classList.toggle("scrolled",window.scrollY>20)};s();addEventListener("scroll",s,{passive:true});}
+  var els=document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(x){io.observe(x)});}
+  else els.forEach(function(x){x.classList.add("in")});
+  var f=document.getElementById("cform");
+  if(f)f.addEventListener("submit",function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){f.reportValidity();return;}
+    var ok=document.getElementById("formok"),btn=f.querySelector("button[type=submit]");
+    if(btn){btn.disabled=true;btn.style.opacity=.6;}
+    fetch(f.action,{method:"POST",body:new FormData(f),headers:{Accept:"application/json"}})
+      .then(function(r){
+        if(r.ok){if(ok){ok.classList.add("show");ok.focus();}f.reset();}
+        else{return r.json().then(function(d){throw new Error(d&&d.errors?d.errors.map(function(x){return x.message;}).join(", "):"error");});}
+      })
+      .catch(function(){alert("Sorry, something went wrong sending your message. Please email me directly at thom.pyle@gmail.com.");})
+      .finally(function(){if(btn){btn.disabled=false;btn.style.opacity=1;}});
+  });
+})();
+</script>
+</body>
+</html>
